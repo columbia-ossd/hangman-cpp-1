@@ -1,0 +1,20 @@
+#include "Game.h"
+
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+
+int main() {
+    std::srand(std::time(nullptr));
+
+    std::cout << "=======================================" << std::endl;
+    std::cout << " Hangman Game" << std::endl;
+    std::cout << "=======================================" << std::endl;
+    std::cout << "\nLet's guess a Washington State city!" << std::endl;
+
+    Game game;
+    game.newGame();
+    game.play();
+
+    return 0;
+}
