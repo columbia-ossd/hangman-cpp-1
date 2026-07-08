@@ -6,10 +6,15 @@
 
 Game::Game() {
     numberOfErrors = 0;
+    numOfGames = 0;
+    wins = 0;
+    losses = 0;
 }
 
 void Game::newGame() {
     numberOfErrors = 0;
+ 
+
     guessedLetters.clear();
 
     wordToFind = dictionary.getRandomWord();
@@ -20,8 +25,6 @@ void Game::newGame() {
               << " starts with " << wordToFind[0] << std::endl;
 }
 
-
-
 void Game::playLoop(){
 
     std::string userInput;
@@ -30,6 +33,8 @@ void Game::playLoop(){
 
         newGame();
         play();
+
+        scoreboard();
 
         std::cout << "Press 1 to play again and continue, any other key to stop: ";
 
@@ -42,6 +47,8 @@ void Game::playLoop(){
 }
 
 void Game::play() {
+    
+    numOfGames++;
 
     while (numberOfErrors < maxErrors && !isWordFound()) {
         std::cout << "\nEnter a letter: ";
@@ -62,9 +69,11 @@ void Game::play() {
 
     if (isWordFound()) {
         std::cout << "\nCongratulations! You win!\n" << std::endl;
+        wins++;
     } else {
         std::cout << "\nOh no! The hangman is complete." << std::endl;
         std::cout << "The city was: " << wordToFind << "\n" <<  std::endl;
+        losses++;
     }
 
 
@@ -107,4 +116,15 @@ std::string Game::wordFoundContent() const {
     }
 
     return content;
+}
+
+
+
+void Game::scoreboard(){
+
+    std::cout << "Scoreboard\n" 
+        << "-----------------\n"
+        << "Games played: " << numOfGames << "\n"
+        << "Wins: " << wins << "\n"
+        << "Losses: " << losses << "\n\n";
 }

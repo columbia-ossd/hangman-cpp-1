@@ -13,6 +13,7 @@ public:
     void newGame();
     void play();
     void playLoop();
+    void scoreboard();
 
 private:
 
@@ -23,6 +24,10 @@ private:
     std::vector<char> wordFound;
     int numberOfErrors;
     std::vector<std::string> guessedLetters;
+    
+    int numOfGames;
+    unsigned int wins;
+    unsigned int losses;
 
     void processGuess(const std::string& userInput);
     bool isWordFound() const;
