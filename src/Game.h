@@ -12,8 +12,11 @@ public:
 
     void newGame();
     void play();
+    void playLoop();
+    void scoreboard();
 
 private:
+
     static const int maxErrors = 6;
 
     Dictionary dictionary;
@@ -21,6 +24,10 @@ private:
     std::vector<char> wordFound;
     int numberOfErrors;
     std::vector<std::string> guessedLetters;
+    
+    int numOfGames;
+    unsigned int wins;
+    unsigned int losses;
 
     void processGuess(const std::string& userInput);
     bool isWordFound() const;
