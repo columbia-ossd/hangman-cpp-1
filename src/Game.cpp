@@ -36,13 +36,23 @@ void Game::playLoop(){
 
         scoreboard();
 
-        std::cout << "Press 1 to play again and continue, any other key to stop: ";
+        bool validResponse = false;
 
-        std::cin >> userInput;
+        do {
+            std::cout << "Play again? (y/n): ";
+            std::cin >> userInput;
+
+            validResponse = userInput == "y" || userInput == "Y"
+                || userInput == "n" || userInput == "N";
+
+            if (!validResponse) {
+                std::cout << "Invalid response. Please enter y or n." << std::endl;
+            }
+        } while (!validResponse);
 
         std::cout << "\n";
         
-    }while(userInput == "1");
+    }while(userInput == "y" || userInput == "Y");
 
 }
 
